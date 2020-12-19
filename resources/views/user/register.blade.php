@@ -29,10 +29,10 @@
 
             <li><label for="password">Password</label></li>
             <li><input type="password" id="password" name="password" value="Enter your password..."></li>
-            <li>
+            <li class="show-icon">
                 @include('shared.eye')
             </li>
-            <li>
+            <li class="hide-icon">
                 @include('shared.eye_slash')
             </li>
             <li class="error">Please enter your password.</li>
