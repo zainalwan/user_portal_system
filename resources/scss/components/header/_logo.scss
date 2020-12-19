@@ -1,0 +1,39 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+.logo {
+    div {
+        $size: 35px;
+
+        width: $size;
+        height: $size;
+        border-radius: 50%;
+        display: inline-block;
+
+        &:nth-of-type(1) {
+            background-color: var.$purple_light;
+        }
+
+        &:nth-of-type(2) {
+            background-color: var.$purple_transparent;
+            margin-left: -20px;
+        }
+    }
+}
+
+h1 {
+    font-family: Montserrat;
+    font-weight: 700;
+    color: var.$purple_light;
+    font-size: 1.3rem;
+    margin-left: .5em;
+    text-transform: uppercase;
+}

@@ -7,7 +7,11 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'helpers/normalize';
-@use 'helpers/typography';
+@use '../../helpers/variables' as var;
 
-@use 'components/header/init';
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+}

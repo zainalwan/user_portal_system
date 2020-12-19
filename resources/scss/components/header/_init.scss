@@ -7,7 +7,5 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'helpers/normalize';
-@use 'helpers/typography';
-
-@use 'components/header/init';
+@use 'header';
+@use 'logo';
