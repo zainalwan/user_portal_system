@@ -15,10 +15,6 @@
     <form action="/register" method="post">
         @csrf
         <ul>
-            <li><label for="current_password">Current password</label></li>
-            <li><input type="password" id="current_password" name="current_password" value="Enter your password..."></li>
-            <li class="error">Please enter your current password.</li>
-
             <li><label for="new_password">New password</label></li>
             <li><input type="password" id="new_password" name="new_password" value="Enter your new password..."></li>
             <li>
@@ -32,9 +28,6 @@
             <li class="button-group">
                 <span>
                     <input type="submit" name="save" value="Save">
-                </span>
-                <span>
-                    <a href="/">Cancel</a>
                 </span>
             </li>
         </ul>

@@ -21,6 +21,12 @@
 
             <li><label for="password">Password</label></li>
             <li><input type="password" id="password" name="password" value="Enter your password..."></li>
+            <li>
+                @include('shared.eye')
+            </li>
+            <li>
+                @include('shared.eye_slash')
+            </li>
             <li class="error">Please enter your password.</li>
 
             <li class="button-group">
