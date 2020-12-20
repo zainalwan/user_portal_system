@@ -7,9 +7,13 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'helpers/normalize';
-@use 'helpers/typography';
+footer {
+    span {
+        display: block;
+        font-size: .85rem;
 
-@use 'components/header/init' as header;
-@use 'components/main/init' as main;
-@use 'components/footer/init' as footer;
+        a {
+            color: inherit;
+        }
+    }
+}
