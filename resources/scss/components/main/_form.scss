@@ -1,0 +1,48 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+main {
+    form {
+        ul {
+            list-style: none;
+            padding: 0;
+
+            .error {
+                color: var.$red_error;
+                font-size: .85em;
+                margin-top: .5em;
+            }
+
+            li {
+                &:nth-of-type(1) {
+                    label {
+                        margin-top: 0;
+                    }
+                }
+
+                label {
+                    display: block;
+                    margin: 1.4em auto .5em;
+                }
+
+                input[type="text"],
+                input[type="password"] {
+                    color: var.$grey_2;
+                    border: none;
+                    border-bottom: 1px solid var.$grey_3;
+                    width: 80%;
+                    text-align: center;
+                    padding: .3em .5em;
+                }
+            }
+        }
+    }
+}

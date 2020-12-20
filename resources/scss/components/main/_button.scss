@@ -1,0 +1,29 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+.button {
+    line-height: 1;
+    border: none;
+    border-radius: 3em;
+    padding: .6em 3em;
+    cursor: pointer;
+    transition: .3s cubic-bezier(0.83, 0, 0.17, 1);
+    margin: 2em auto 0;
+
+    &.primary {
+        background-color: var.$purple_light;
+        color: white;
+
+        &:hover {
+            background-color: var.$purple_dark;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+.register-direction,
+.login-direction {
+    margin: 3em auto 0;
+
+    span {
+        display: block;
+
+        &:nth-of-type(1) {
+            margin-bottom: .5em;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+main {
+    .show-icon {
+        svg {
+            display: none;
+        }
+    }
+
+    .show-icon,
+    .hide-icon {
+        position: relative;
+
+        svg {
+            background-color: var.$white;
+            position: absolute;
+            width: 20px;
+            fill: var.$grey_2;
+            right: 12%;
+            transform: translate(0, -26px);
+        }
+    }
+}

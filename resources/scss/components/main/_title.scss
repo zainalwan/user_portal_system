@@ -1,0 +1,21 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+main {
+    h2 {
+        font-family: Montserrat;
+        font-weight: 700;
+        color: var.$grey_3;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 2em auto;
+    }
+}
