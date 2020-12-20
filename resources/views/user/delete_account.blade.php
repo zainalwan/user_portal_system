@@ -24,7 +24,7 @@
         <ul>
             <li class="button-group">
                 <span>
-                    <input type="submit" name="send-email" value="Send confirmation email">
+                    <input class="button primary" type="submit" name="send-email" value="Send confirmation email">
                 </span>
             </li>
         </ul>

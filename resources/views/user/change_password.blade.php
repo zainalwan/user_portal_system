@@ -31,10 +31,10 @@
 
             <li class="button-group">
                 <span>
-                    <input type="submit" name="save" value="Save">
+                    <input class="button primary" type="submit" name="save" value="Save">
                 </span>
                 <span>
-                    <a href="/">Cancel</a>
+                    <a class="button secondary" href="/">Cancel</a>
                 </span>
             </li>
         </ul>

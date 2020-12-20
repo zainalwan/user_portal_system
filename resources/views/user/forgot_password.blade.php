@@ -21,10 +21,10 @@
 
             <li class="button-group">
                 <span>
-                    <input type="submit" name="send" value="Send recovery email">
+                    <input class="button primary" type="submit" name="send" value="Send recovery email">
                 </span>
                 <span>
-                    <a href="/login">Cancel</a>
+                    <a class="button secondary" href="/login">Cancel</a>
                 </span>
             </li>
         </ul>

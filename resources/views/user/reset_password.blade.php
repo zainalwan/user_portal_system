@@ -27,7 +27,7 @@
 
             <li class="button-group">
                 <span>
-                    <input type="submit" name="save" value="Save">
+                    <input class="button primary" type="submit" name="save" value="Save">
                 </span>
             </li>
         </ul>

@@ -28,10 +28,10 @@
         <ul>
             <li class="button-group">
                 <span>
-                    <input type="submit" name="send-email" value="Send recovery email">
+                    <input class="button primary" type="submit" name="send-email" value="Send recovery email">
                 </span>
                 <span>
-                    <a href="/log_out">Log out</a>
+                    <a class="button secondary" href="/log_out">Log out</a>
                 </span>
             </li>
         </ul>

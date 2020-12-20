@@ -31,7 +31,7 @@
 
             <li class="button-group">
                 <span>
-                    <input type="submit" name="login" value="Login">
+                    <input class="button primary" type="submit" name="login" value="Login">
                 </span>
             </li>
         </ul>

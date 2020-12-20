@@ -39,7 +39,7 @@
 
             <li class="button-group">
                 <span>
-                    <input type="submit" name="register" value="Register">
+                    <input class="button primary" type="submit" name="register" value="Register">
                 </span>
             </li>
         </ul>
