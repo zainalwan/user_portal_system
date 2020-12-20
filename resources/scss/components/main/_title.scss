@@ -8,14 +8,23 @@
 */
 
 @use '../../helpers/variables' as var;
+@use '../../helpers/mixins' as mix;
 
 main {
     h2 {
         font-family: Montserrat;
         font-weight: 700;
         color: var.$grey_3;
-        text-align: center;
         font-size: 1.5rem;
         margin: 2em auto;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    main {
+        h2 {
+            margin: 3em auto 1.5em;
+            font-size: 2.5rem;
+        }
     }
 }

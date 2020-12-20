@@ -18,7 +18,7 @@ main {
             .error {
                 color: var.$red_error;
                 font-size: .85em;
-                margin-top: .5em;
+                margin-top: .7em;
             }
 
             li {
@@ -30,7 +30,7 @@ main {
 
                 label {
                     display: block;
-                    margin: 2em auto .5em;
+                    margin: 2em auto 1em;
                 }
 
                 input[type="text"],
@@ -40,7 +40,23 @@ main {
                     border-bottom: 1px solid var.$grey_3;
                     width: 80%;
                     text-align: center;
-                    padding: .3em .5em;
+                    padding: .3em 0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    main {
+        form {
+            ul {
+                li {
+                    input[type="text"],
+                    input[type="password"] {
+                        width: 70%;
+                        text-align: left;
+                    }
                 }
             }
         }

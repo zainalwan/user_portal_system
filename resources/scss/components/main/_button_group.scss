@@ -38,3 +38,38 @@
         }
     }
 }
+
+@media only screen and (min-width: 1024px) {
+    .button-group {
+        form & {
+            margin-top: 3em;
+
+            span {
+                display: inline-block;
+
+                &:nth-of-type(1) {
+                    margin-bottom: intial;
+                    margin-right: .5em;
+                }
+            }
+        }
+
+        &.home {
+            span {
+                &:nth-of-type(1) {
+                    margin-left: 0;
+                }
+                
+                &:nth-of-type(2) {
+                    margin-left: 1em;
+                }
+
+                &:nth-of-type(1),
+                &:nth-of-type(2) {
+                    margin-top: 5em;
+                    margin-bottom: 5em;
+                }
+            }
+        }
+    }
+}
