@@ -18,7 +18,7 @@ app: app.scss
 email: email.scss
 	@echo "Compiling SCSS codes for email view..."
 	mkdir -p ${CSS_OUTPUT_DIR}
-	sass -s compressed --update --watch email.scss ${CSS_OUTPUT_PATH}
+	sass -s compressed --update --watch email.scss ${EMAIL_CSS_OUTPUT_PATH}
 
 clean:
 	@echo "Removing compiled CSS..."
