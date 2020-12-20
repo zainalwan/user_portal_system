@@ -1,0 +1,28 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use 'mixins' as mix;
+
+/**
+ * Montserrat
+ */
+@font-face {
+    @include mix.font_face(Montserrat, "montserrat/Montserrat-Bold.otf", false, 700);
+}
+
+/**
+ * Roboto
+ */
+@font-face {
+    @include mix.font_face(Roboto, "roboto/Roboto-Regular.ttf", false);
+}
+
+@font-face {
+    @include mix.font_face(Roboto, "roboto/Roboto-Medium.ttf", false, 500);
+}

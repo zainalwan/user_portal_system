@@ -8,9 +8,8 @@
 */
 
 @use 'helpers/normalize';
-@use 'helpers/typography_app';
+@use 'helpers/typography_email';
 
-@use 'components/body/init' as body;
 @use 'components/header/init' as header;
 @use 'components/main/init' as main;
 @use 'components/footer/init' as footer;
