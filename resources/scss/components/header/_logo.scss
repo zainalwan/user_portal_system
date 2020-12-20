@@ -39,3 +39,20 @@ header {
         text-transform: uppercase;
     }
 }
+
+@media only screen and (min-width: 1024px) {
+    header {
+        .logo {
+            margin-left: 5em;
+            div {
+                &:nth-of-type(1) {
+                    background-color: var.$white;
+                }
+            }
+        }
+
+        h1 {
+            color: var.$white;
+        }
+    }
+}

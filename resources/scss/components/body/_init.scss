@@ -7,17 +7,4 @@
 | (zainalwan4@gmail.com).
 */
 
-@use '../../helpers/variables' as var;
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3em;
-}
-
-@media only screen and (min-width: 1024px) {
-    header {
-        justify-content: flex-start;
-    }
-}
+@use 'body';
