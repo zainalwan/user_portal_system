@@ -7,12 +7,10 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'main';
-@use 'title';
-@use 'hero_text';
-@use 'paragraph';
-@use 'form';
-@use 'eye_and_eye_splash';
-@use 'button';
-@use 'button_group';
-@use 'register_and_login_direction';
+main {
+    h3 {
+        font-size: 1.4em;
+        line-height: 1.5;
+        margin: 0;
+    }
+}
