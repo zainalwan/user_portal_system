@@ -1,0 +1,41 @@
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+@use '../../helpers/variables' as var;
+
+.button-group {
+    form & {
+        margin-top: 3em;
+
+        span {
+            display: block;
+
+            &:nth-of-type(1) {
+                margin-bottom: 1em;
+            }
+        }
+    }
+
+    &.home {
+        span {
+            display: inline-block;
+            margin: 3.5em 1em;
+
+            &:nth-of-type(3) {
+                display: block;
+                margin: 3.5em auto 0;
+            }
+
+            a {
+                color: var.$grey_2;
+                margin-top: 0;
+            }
+        }
+    }
+}

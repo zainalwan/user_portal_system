@@ -12,9 +12,9 @@
 @extends('layout.app')
 
 @section('content')
-    <p>
+    <h3>
         Welcome, User. Enjoy our application.
-    </p>
+    </h3>
 
     <div class="button-group home">
         <span>
@@ -24,7 +24,7 @@
             <a href="/delete_account">Delete account</a>
         </span>
         <span>
-            <a href="/log_out">Log out</a>
+            <a class="button secondary" href="/log_out">Log out</a>
         </span>
     </div>
 @endsection
