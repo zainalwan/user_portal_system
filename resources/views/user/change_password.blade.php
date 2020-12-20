@@ -39,9 +39,4 @@
             </li>
         </ul>
     </form>
-
-    <div class="login-direction">
-        <span>Already have an account?</span>
-        <span><a href="/login">Login</a> now.</span>
-    </div>
 @endsection
