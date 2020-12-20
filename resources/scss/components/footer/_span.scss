@@ -12,6 +12,10 @@ footer {
         display: block;
         font-size: .85rem;
 
+        &:nth-of-type(1) {
+            margin-bottom: .5em;
+        }
+
         a {
             color: inherit;
         }

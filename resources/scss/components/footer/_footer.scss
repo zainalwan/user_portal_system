@@ -10,8 +10,9 @@
 @use '../../helpers/variables' as var;
 
 footer {
-    margin-top: 2em;
+    margin-top: 5em;
     font-family: Roboto;
     text-align: center;
     color: var.$grey_1;
+    padding-bottom: 2em;
 }
