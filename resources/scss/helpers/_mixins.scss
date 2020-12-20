@@ -7,6 +7,22 @@
 | (zainalwan4@gmail.com).
 */
 
+@use 'sass:string';
+@use 'variables' as var;
+
 @mixin col($width, $amount) {
     width: calc((#{$width} / #{$amount}) * 100%);
+}
+
+@mixin font_face($name, $file_name, $local, $weight: normal, $style: normal) {
+    font-family: $name;
+
+    @if $local {
+        src: url('../fonts/#{$file_name}');
+    } @else {
+        src: url('#{string.unquote(var.$app_url)}/assets/fonts/#{string.unquote($file_name)}');
+    }
+
+    font-weight: $weight;
+    font-style: $style;
 }

@@ -7,29 +7,22 @@
 | (zainalwan4@gmail.com).
 */
 
+@use 'mixins' as mix;
+
 /**
  * Montserrat
  */
 @font-face {
-    font-family: Montserrat;
-    src: url('../fonts/montserrat/Montserrat-Bold.otf');
-    font-weight: 700;
-    font-style: normal;
+    @include mix.font_face(Montserrat, "montserrat/Montserrat-Bold.otf", true, 700);
 }
 
 /**
  * Roboto
  */
 @font-face {
-    font-family: Roboto;
-    src: url('../fonts/roboto/Roboto-Regular.ttf');
-    font-weight: normal;
-    font-style: normal;
+    @include mix.font_face(Roboto, "roboto/Roboto-Regular.ttf", true);
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url('../fonts/roboto/Roboto-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
+    @include mix.font_face(Roboto, "roboto/Roboto-Medium.ttf", true, 500);
 }
