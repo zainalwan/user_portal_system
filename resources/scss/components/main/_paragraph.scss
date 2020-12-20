@@ -7,10 +7,9 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'main';
-@use 'title';
-@use 'paragraph';
-@use 'form';
-@use 'eye_and_eye_splash';
-@use 'button';
-@use 'register_and_login_direction';
+main {
+    p {
+        line-height: 1.5;
+        margin-bottom: 1.5em;
+    }
+}
