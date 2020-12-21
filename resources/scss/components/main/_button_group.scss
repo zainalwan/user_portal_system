@@ -10,9 +10,9 @@
 @use '../../helpers/variables' as var;
 
 .button-group {
-    form & {
-        margin-top: 3em;
+    margin-top: 3em;
 
+    form & {
         span {
             display: block;
 
@@ -29,7 +29,7 @@
             &:nth-of-type(1),
             &:nth-of-type(2) {
                 display: inline-block;
-                margin: 6em 1em;
+                margin: 3em 1em 7em;
 
                 a {
                     color: var.$grey_2;
