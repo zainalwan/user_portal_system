@@ -24,5 +24,10 @@ main {
         @include mix.col(4, 12);
         margin-left: calc((1 / 12) * 100%);
         text-align: left;
+
+        body.email & {
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 }
