@@ -47,12 +47,20 @@ header {
             div {
                 &:nth-of-type(1) {
                     background-color: var.$white;
+
+                    body.email & {
+                        background-color: var.$purple_light;
+                    }
                 }
             }
         }
 
         h1 {
             color: var.$white;
+
+            body.email & {
+                color: var.$purple_light;
+            }
         }
     }
 }
