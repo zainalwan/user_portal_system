@@ -44,6 +44,11 @@ header {
     header {
         .logo {
             margin-left: 5em;
+
+            body.email & {
+                margin-left: initial;
+            }
+
             div {
                 &:nth-of-type(1) {
                     background-color: var.$white;
