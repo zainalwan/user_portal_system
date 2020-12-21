@@ -13,18 +13,18 @@
 
 @section('content')
     <p>
-        Welcome, User. We should know that email you use is
-        valid. Your email is used to security purpose of your
-        account.
+        Welcome, User. We have catched suspicious activity to your
+        account. We decide to deactivate yours temporarily. You could
+        reactivate by clicking button below.
     </p>
     <p>
-        By clicking verify button below, you could activate
-        your account and start enjoy our application.
+        Be aware of any attacks, we suggest to you to use stronger
+        password.
     </p>
 
     <div class="button-group">
         <span>
-            <a class="button primary" href="/change_password">Verify your email</a>
+            <a class="button primary" href="/change_password">Reset your password</a>
         </span>
     </div>
 @endsection

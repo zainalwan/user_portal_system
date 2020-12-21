@@ -13,18 +13,20 @@
 
 @section('content')
     <p>
-        Welcome, User. We should know that email you use is
-        valid. Your email is used to security purpose of your
-        account.
+        Welcome, User. We are so sorry to hear your decision. We hope
+        you have enjoy our application well.
     </p>
     <p>
-        By clicking verify button below, you could activate
-        your account and start enjoy our application.
+        You could delete your account or cancel it by clicking a
+        button below.
     </p>
 
     <div class="button-group">
         <span>
-            <a class="button primary" href="/change_password">Verify your email</a>
+            <a class="button secondary" href="/change_password">Delete account</a>
+        </span>
+        <span>
+            <a class="button primary" href="/change_password">Cancel</a>
         </span>
     </div>
 @endsection

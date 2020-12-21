@@ -12,7 +12,8 @@
 .button-group {
     margin-top: 3em;
 
-    form & {
+    form &,
+    body.email & {
         span {
             display: block;
 
@@ -41,7 +42,8 @@
 
 @media only screen and (min-width: 1024px) {
     .button-group {
-        form & {
+        form &,
+        body.email & {
             margin-top: 3em;
 
             span {
