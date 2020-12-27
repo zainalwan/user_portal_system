@@ -27,7 +27,7 @@ class IsNotLoggedIn
     {
         $ticket = $request->session()->get('_ticket');
 
-        if(!$ticket) {
+        if($ticket) {
             return redirect('/');
         }
         return $next($request);
