@@ -22,6 +22,17 @@ use Illuminate\Support\Facades\Route;
 | (zainalwan4@gmail.com).
 */
 
+Route::middleware(['is.not.logged.in'])->group(function() {
+    Route::get('register', [UserController::class, 'register']);
+    Route::post('register', [UserController::class, 'store']);
+
+    Route::get('login', [UserController::class, 'login']);
+    Route::post('login', [UserController::class, 'authenticate']);
+
+    Route::get('forgot_password', [UserController::class, 'forgotPassword']);
+    Route::post('forgot_password', [UserController::class, 'sendRecovertyAccountMail']);
+});
+
 Route::middleware(['is.logged.in'])->group(function() {
     Route::get('/', function () {
         return view('pages.home');
@@ -45,20 +56,5 @@ Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
     Route::post('warning', [UserController::class, 'sendRecovertyAccountMail']);
 });
 
-Route::middleware(['is.not.logged.in'])->group(function() {
-    Route::get('register', [UserController::class, 'register']);
-    Route::post('register', [UserController::class, 'store']);
-
-    Route::get('login', [UserController::class, 'login']);
-    Route::post('login', [UserController::class, 'authenticate']);
-
-    Route::get('forgot_password', [UserController::class, 'forgotPassword']);
-    Route::post('forgot_password', [UserController::class, 'sendRecovertyAccountMail']);
-});
-
 Route::get('reset_password/{reset_password_token}', [UserController::class, 'resetPassword']);
 Route::put('reset_password/{reset_password_token}', [UserController::class, 'updatePassword']);
-
-Route::get('testing', function() {
-    return view('user.verify_email');
-});
