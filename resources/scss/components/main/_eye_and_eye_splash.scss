@@ -11,14 +11,13 @@
 
 main {
     .show-icon {
-        svg {
-            display: none;
-        }
+        display: none;
     }
 
     .show-icon,
     .hide-icon {
         position: relative;
+	cursor: pointer;
 
         svg {
             background-color: var.$white;

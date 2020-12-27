@@ -8,16 +8,16 @@
 -->
 
 <html>
-	<head>
-		<title>User Portal System</title>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Zain Alwan Wima Irfani">
-		<meta name="description" content="Portal system to authenticate users.">
-        <link rel="stylesheet" href="/assets/css/app.css">
-	</head>
+    <head>
+	<title>User Portal System</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Zain Alwan Wima Irfani">
+	<meta name="description" content="Portal system to authenticate users.">
+	<link rel="stylesheet" href="/assets/css/app.css">
+    </head>
 
-	<body>
+    <body>
         <header>
             <div class="logo">
                 <div></div>
@@ -35,5 +35,7 @@
             <span>Copyright 2020 Zain Alwan Wima Irfani</span>
             <span>UI/UX concept was designed by <a target="_blank" href="https://www.freepik.com/free-vector/log-landing-page-digital-design_5458477.htm">Freepik</a></span>
         </footer>
-	</body>
+
+	<script src="/assets/js/script.js"></script>
+    </body>
 </html>
