@@ -7,13 +7,8 @@
 | (zainalwan4@gmail.com).
 */
 
-@use 'main';
-@use 'title';
-@use 'hero_text';
-@use 'paragraph';
-@use 'notif';
-@use 'form';
-@use 'eye_and_eye_splash';
-@use 'button';
-@use 'button_group';
-@use 'register_and_login_direction';
+main {
+    .notif {
+	font-weight: 500;
+    }
+}

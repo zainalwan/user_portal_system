@@ -58,3 +58,7 @@ Route::middleware(['is.not.logged.in'])->group(function() {
 
 Route::get('reset_password/{reset_password_token}', [UserController::class, 'resetPassword']);
 Route::put('reset_password/{reset_password_token}', [UserController::class, 'updatePassword']);
+
+Route::get('testing', function() {
+    return view('user.verify_email');
+});
