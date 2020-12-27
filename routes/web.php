@@ -13,6 +13,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('user.register');
+/*
+|--------------------------------------------------------------------------
+| LICENSE
+|--------------------------------------------------------------------------
+| Code that written below is belong to Zain Alwan Wima Irfani. You may
+| not use, share, modify, and study without the author's permission
+| (zainalwan4@gmail.com).
+*/
+
+Route::middleware(['is.logged.in'])->group(function() {
+    Route::get('/', function () {
+        return view('pages.home');
+    });
+
+    Route::get('change_password', [UserController::class, 'changePassword']);
+    Route::put('change_password', [UserController::class, 'updatePassword']);
+
+    Route::get('delete_account', [UserController::class, 'deleteAccount']);
+    Route::post('delete_account', [UserController::class, 'sendDeleteAccountConfirmationMail']);
+
+    Route::get('log_out', [UserController::class, 'logOut']);
 });
+
+Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
+    Route::get('verify', [UserController::class, 'verify']);
+    Route::post('verify', [UserController::class, 'sendEmailVerificationMail']);
+    Route::get('verify/{email_verification_token}', [UserController::class, 'activateAccount']);
+
+    Route::get('warning', [UserController::class, 'warning']);
+    Route::post('warning', [UserController::class, 'sendRecovertyAccountMail']);
+});
+
+Route::middleware(['is.not.logged.in'])->group(function() {
+    Route::get('register', [UserController::class, 'register']);
+    Route::post('register', [UserController::class, 'store']);
+
+    Route::get('login', [UserController::class, 'login']);
+    Route::post('login', [UserController::class, 'authenticate']);
+
+    Route::get('forgot_password', [UserController::class, 'forgotPassword']);
+    Route::post('forgot_password', [UserController::class, 'sendRecovertyAccountMail']);
+});
+
+Route::get('reset_password/{reset_password_token}', [UserController::class, 'resetPassword']);
+Route::put('reset_password/{reset_password_token}', [UserController::class, 'updatePassword']);
