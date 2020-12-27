@@ -12,6 +12,10 @@
 @extends('layout.app')
 
 @section('content')
+    <span class="notif">
+        The recovery email has been sent.
+    </span>
+    
     <form action="/forgot_password" method="post">
         @csrf
         <ul>

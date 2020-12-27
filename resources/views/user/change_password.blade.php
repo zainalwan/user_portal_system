@@ -12,6 +12,10 @@
 @extends('layout.app')
 
 @section('content')
+    <span class="notif">
+	Your password successfully changed.
+    </span>
+
     <form action="/register" method="post">
         @csrf
         <ul>
