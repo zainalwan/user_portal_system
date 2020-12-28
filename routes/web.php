@@ -51,7 +51,7 @@ Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
 
 Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
     Route::get('verify', [UserController::class, 'verify']);
-    Route::post('verify', [UserController::class, 'sendEmailVerificationMail']);
+    Route::post('verify', [UserController::class, 'resendEmailVerificationMail']);
     Route::get('verify/{email_verification_token}', [UserController::class, 'activateAccount']);
 });
 
