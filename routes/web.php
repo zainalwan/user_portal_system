@@ -35,7 +35,9 @@ Route::middleware(['is.not.logged.in'])->group(function() {
     Route::post('forgot_password', [UserController::class, 'sendRecovertyAccountMail']);
 });
 
-Route::middleware(['is.logged.in'])->group(function() {
+Route::get('log_out', [UserController::class, 'logOut'])->middleware('is.logged.in');
+
+Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
     Route::get('/', function () {
         return view('pages.home');
     });
@@ -45,15 +47,15 @@ Route::middleware(['is.logged.in'])->group(function() {
 
     Route::get('delete_account', [UserController::class, 'deleteAccount']);
     Route::post('delete_account', [UserController::class, 'sendDeleteAccountConfirmationMail']);
-
-    Route::get('log_out', [UserController::class, 'logOut']);
 });
 
 Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
     Route::get('verify', [UserController::class, 'verify']);
     Route::post('verify', [UserController::class, 'sendEmailVerificationMail']);
     Route::get('verify/{email_verification_token}', [UserController::class, 'activateAccount']);
+});
 
+Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
     Route::get('warning', [UserController::class, 'warning']);
     Route::post('warning', [UserController::class, 'sendRecovertyAccountMail']);
 });
