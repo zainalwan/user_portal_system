@@ -70,7 +70,7 @@ class UserController extends Controller
             'user_name' => $user->user_name,
             'email' => $user->email,
         ];
-        $reqeust->session()->put('_ticket', $ticket);
+        $request->session()->put('_ticket', $ticket);
 
         $this->sendEmailVerificationMail($user->email, $user->name, $user->email_verification_token);
 
@@ -140,5 +140,17 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    /**
+     * Log out the user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logOut(Request $request)
+    {
+        $request->session()->forget('_ticket');
+        return redirect('/login');
     }
 }
