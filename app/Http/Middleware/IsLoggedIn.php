@@ -27,7 +27,8 @@ class IsLoggedIn
     {
         $ticket = $request->session()->get('_ticket');
 
-        if($ticket['id']
+        if($ticket
+           && $ticket['id']
            && $ticket['name']
            && $ticket['user_name']
            && $ticket['email'])
