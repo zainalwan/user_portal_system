@@ -15,9 +15,11 @@
     <p>Welcome, User. Please verify your email by clicking the link we have sent.</p>
     <p>Click button below to resend verification email.</p>
 
-    <span class="notif">
-        The verification email has been sent.
-    </span>
+    @if(session('notif'))
+	<span class="notif">
+            The verification email has been sent.
+	</span>
+    @endif
 
     <form action="/verify" method="post">
         @csrf
