@@ -41,6 +41,7 @@ class RegisteredEmail implements Rule
 
         if($user)
         {
+            session(['registered_email' => $value]);
             return true;
         }
 
