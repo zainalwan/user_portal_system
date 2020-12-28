@@ -98,7 +98,8 @@ class UserController extends Controller
     {
         $validated = $request->validated();
 
-        $user = User::where('email', $validated['email']);
+        $user = User::where('email', $validated['email'])
+              ->first();
 
         $ticket = [
             'id' => $user->id,
@@ -107,6 +108,7 @@ class UserController extends Controller
             'email' => $user->email,
         ];
         $request->session()->put('_ticket', $ticket);
+        $request->session()->forget('login_email');
 
         return redirect('/');
     }
