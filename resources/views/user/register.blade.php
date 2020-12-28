@@ -16,26 +16,34 @@
         @csrf
         <ul>
             <li><label for="name">Name</label></li>
-            <li><input type="text" id="name" name="name" value="Enter your name..."></li>
-            <li class="error">Please enter your name.</li>
+            <li><input type="text" id="name" name="name" value="{{ old('name') }}"></li>
+	    @error('name')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li><label for="user_name">User name</label></li>
-            <li><input type="text" id="user_name" name="user_name" value="Enter your user name..."></li>
-            <li class="error">Please enter your user_name.</li>
+            <li><input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}"></li>
+	    @error('user_name')
+                <li class="error">{{ $message }}</li>
+	    @enderror
             
             <li><label for="email">Email</label></li>
-            <li><input type="text" id="email" name="email" value="Enter your email..."></li>
-            <li class="error">Please enter your email.</li>
+            <li><input type="text" id="email" name="email" value="{{ old('email') }}"></li>
+	    @error('email')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li><label for="password">Password</label></li>
-            <li><input type="password" id="password" name="password" value="Enter your password..."></li>
+            <li><input type="password" id="password" name="password"></li>
             <li class="show-icon">
                 @include('shared.eye')
             </li>
             <li class="hide-icon">
                 @include('shared.eye_slash')
             </li>
-            <li class="error">Please enter your password.</li>
+	    @error('password')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li class="button-group">
                 <span>
