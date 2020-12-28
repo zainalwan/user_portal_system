@@ -13,6 +13,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CorrectPassword implements Rule
 {
@@ -35,14 +36,14 @@ class CorrectPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-        $email = session('registered_email');
+        $email = session('login_email');
 
-        if($email)
+        $user = DB::table('users')
+              ->where('email', $email)
+              ->first();
+
+        if($user)
         {
-            $user = DB:table('users')
-                ->where('email', $email)
-                ->first();
-
             return Hash::check($value, $user->password);
         }
 

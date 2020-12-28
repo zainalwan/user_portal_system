@@ -35,13 +35,14 @@ class RegisteredEmail implements Rule
      */
     public function passes($attribute, $value)
     {
-        $user = DB:table('users')
-            ->where('email', $value)
-            ->first();
+        session(['login_email' => $value]);
+
+        $user = DB::table('users')
+              ->where('email', $value)
+              ->first();
 
         if($user)
         {
-            session(['registered_email' => $value]);
             return true;
         }
 
