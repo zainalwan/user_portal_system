@@ -31,17 +31,20 @@ class IsActiveAccount
               ->where('id', $user_id)
               ->first();
 
-        if($user->active == 1)
+        if($user
+           && $user->active == 1)
         {
             return $next($request);
         }
 
-        if($user->active == -1)
+        if($user
+           && $user->active == -1)
         {
             return redirect('/warning');
         }
 
-        if($user->active == 0)
+        if($user
+           && $user->active == 0)
         {
             return redirect('/verify');
         }
