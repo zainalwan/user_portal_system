@@ -64,6 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'is.not.logged.in' => \App\Http\Middleware\IsNotLoggedIn::class,
         'is.logged.in' => \App\Http\Middleware\IsLoggedIn::class,
+        'is.not.active.account' => \App\Http\Middleware\IsNotActiveAccount::class,
         'is.active.account' => \App\Http\Middleware\IsActiveAccount::class,
+        'is.blocked.account' => \App\Http\Middleware\IsBlockedAccount::class,
     ];
 }
