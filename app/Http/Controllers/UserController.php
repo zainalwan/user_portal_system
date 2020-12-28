@@ -88,6 +88,23 @@ class UserController extends Controller
     }
 
     /**
+     * Resend email verification mail
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resendEmailVerificationMail(Request $request)
+    {
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        $this->sendEmailVerificationMail($user->email,
+                                         $user->name,
+                                         $user->email_verification_token);
+
+        return redirect('/verify')->with('notif', 'New verification email has been sent.');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
