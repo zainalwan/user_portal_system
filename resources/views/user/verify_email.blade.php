@@ -19,12 +19,12 @@
         The verification email has been sent.
     </span>
 
-    <form action="/verify_email" method="post">
+    <form action="/verify" method="post">
         @csrf
         <ul>
             <li class="button-group">
                 <span>
-                    <input class="button primary" type="submit" name="send-email" value="Send verification email">
+                    <input class="button primary" type="submit" name="send-email" value="Resend verification email">
                 </span>
             </li>
         </ul>
