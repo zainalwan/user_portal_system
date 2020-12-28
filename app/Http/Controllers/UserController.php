@@ -78,6 +78,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show guide for verifying email
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function verify()
+    {
+        return view('user.verify_email');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
