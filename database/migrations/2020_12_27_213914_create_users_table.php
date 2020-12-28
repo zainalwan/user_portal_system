@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 255);
             $table->integer('active');
             
-            $table->string('account_activation_token', 255)->nullable();
+            $table->string('email_verification_token', 255)->nullable();
             $table->string('password_reset_token', 255)->nullable();
             
             $table->integer('try_count')->nullable();
