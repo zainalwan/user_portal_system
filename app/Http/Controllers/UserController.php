@@ -14,6 +14,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserAccountRequest;
+use App\Http\Requests\AuthenticateUserRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -73,6 +74,39 @@ class UserController extends Controller
         $request->session()->put('_ticket', $ticket);
 
         $this->sendEmailVerificationMail($user->email, $user->name, $user->email_verification_token);
+
+        return redirect('/');
+    }
+
+    /**
+     * Show login form
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login()
+    {
+        return view('user.login');
+    }
+
+    /**
+     * Perform authentication process
+     *
+     * @param  \App\Http\Requests\AuthenticateUserRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function authenticate(AuthenticateUserRequest $request)
+    {
+        $validated = $request->validated();
+
+        $user = User::where('email', $validated['email']);
+
+        $ticket = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'user_name' => $user->user_name,
+            'email' => $user->email,
+        ];
+        $request->session()->put('_ticket', $ticket);
 
         return redirect('/');
     }
