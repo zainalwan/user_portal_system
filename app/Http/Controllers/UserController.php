@@ -16,9 +16,24 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserAccountRequest;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
+use App\Mail\EmailVerification;
 
 class UserController extends Controller
 {
+    /**
+     * Send email verification mail
+     *
+     * @return void
+     */
+    private function sendEmailVerificationMail($email, $name, $email_verification_token)
+    {
+        Mail::to($email)
+            ->send(new EmailVerification($name, $email_verification_token));
+    }
+
     /**
      * Showing registration form.
      *
@@ -45,9 +60,20 @@ class UserController extends Controller
         $user->email = $validated['email'];
         $user->password = Hash::make($validated['password']);
         $user->active = 0;
+        $user->email_verification_token = Str::random(60);
         $user->save();
 
-        dd('SUCCESS');
+        $user = User::where('user_name', $user->user_name)->first();
+        $ticket = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'user_name' => $user->user_name,
+            'email' => $user->email,
+        ];
+        $reqeust->session()->put('_ticket', $ticket);
+
+        $this->sendEmailVerificationMail($user->email, $user->name, $user->email_verification_token);
+
         return redirect('/');
     }
 
