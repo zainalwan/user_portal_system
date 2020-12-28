@@ -13,7 +13,7 @@
 
 @section('content')
     <p>
-        Welcome, User. We should know that email you use is
+        Welcome, {{ $name }}. We should know that email you use is
         valid. Your email is used to security purpose of your
         account.
     </p>
@@ -24,7 +24,7 @@
 
     <div class="button-group">
         <span>
-            <a class="button primary" href="/change_password">Verify your email</a>
+            <a class="button primary" href="{{ url("/verify/{$email_verification_token}") }}">Verify your email</a>
         </span>
     </div>
 @endsection
