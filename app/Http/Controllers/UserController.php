@@ -61,7 +61,11 @@ class UserController extends Controller
         $user->email = $validated['email'];
         $user->password = Hash::make($validated['password']);
         $user->active = 0;
-        $user->email_verification_token = Str::random(60);
+        do
+        {
+            $user->email_verification_token = Str::random(60);
+        }
+        while(User::where('email_verification_token', $user->email_verification_token)->first());
         $user->save();
 
         $user = User::where('user_name', $user->user_name)->first();
