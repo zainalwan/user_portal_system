@@ -170,7 +170,7 @@ class UserController extends Controller
         $user->password = Hash::make($validated['new_password']);
         $user->save();
 
-        return redirect('/change_password');
+        return redirect('/change_password')->with('notif', 'Your password was successfully changed');
     }
 
     /**
