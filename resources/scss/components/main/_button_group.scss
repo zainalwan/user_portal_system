@@ -32,8 +32,13 @@
                 display: inline-block;
                 margin: 3em 1em 7em;
 
-                a {
+                a,
+		input[type="submit"]{
                     color: var.$grey_2;
+		    text-decoration: underline;
+		    background-color: transparent;
+		    border: none;
+		    cursor: pointer;
                 }
             }
         }
