@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 use App\Mail\EmailVerification;
+use App\Mail\DeleteAccountConfirmation;
 
 class UserController extends Controller
 {
@@ -34,6 +35,17 @@ class UserController extends Controller
     {
         Mail::to($email)
             ->send(new EmailVerification($name, $email_verification_token));
+    }
+
+    /**
+     * Send delete account confirmation mail
+     *
+     * @return void
+     */
+    private function sendDeleteAccountConfirmationMail($email, $name, $delete_account_token)
+    {
+        Mail::to($email)
+            ->send(new DeleteAccountConfirmation($name, $delete_account_token));
     }
 
     /**
@@ -192,6 +204,28 @@ class UserController extends Controller
         $user->save();
 
         return redirect('/change_password')->with('notif', 'Your password was successfully changed');
+    }
+
+    /**
+     * Show delete account guide
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAccount(Request $request)
+    {
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        do
+        {
+            $user->delete_account_token = Str::random(60);
+        }
+        while(User::where('delete_account_token', $user->delete_account_token)->first());
+        $user->save();
+
+        $this->sendDeleteAccountConfirmationMail($user->email, $user->name, $user->delete_account_token);
+
+        return view('user.delete_account');
     }
 
     /**
