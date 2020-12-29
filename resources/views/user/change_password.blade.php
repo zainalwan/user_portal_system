@@ -12,16 +12,21 @@
 @extends('layout.app')
 
 @section('content')
-    <span class="notif">
-	Your password successfully changed.
-    </span>
+    @if(session('notif'))
+	<span class="notif">
+	    {{ session('notif') }}
+	</span>
+    @endif
 
-    <form action="/register" method="post">
+    <form action="/change_password" method="post">
         @csrf
+	@method('put')
         <ul>
             <li><label for="current_password">Current password</label></li>
-            <li><input type="password" id="current_password" name="current_password" value="Enter your password..."></li>
-            <li class="error">Please enter your current password.</li>
+            <li><input type="password" id="current_password" name="current_password"></li>
+	    @error('current_password')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li><label for="new_password">New password</label></li>
             <li><input type="password" id="new_password" name="new_password" value="Enter your new password..."></li>
@@ -31,7 +36,9 @@
             <li class="hide-icon">
                 @include('shared.eye_slash')
             </li>
-            <li class="error">Please enter new current password.</li>
+	    @error('new_password')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li class="button-group">
                 <span>
