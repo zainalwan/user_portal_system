@@ -258,12 +258,38 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $delete_account_token
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroyAccount(Request $request, $delete_account_token)
     {
-        //
+        $user = User::where('delete_account_token', $delete_account_token)->first();
+        if(!$user)
+        {
+            abort(404);
+        }
+
+        $user->delete();
+        $request->session()->forget('_ticket');
+
+        return redirect('login');
+    }
+
+    /**
+     * Perform canceling account deletion
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cancelDeleteAccount(Request $request)
+    {
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        $user->delete_account_token = null;
+        $user->save();
+
+        return redirect('/');
     }
 
     /**

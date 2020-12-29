@@ -48,6 +48,7 @@ Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
     Route::delete('delete_account', [UserController::class, 'setDeleteAccountToken']);
     Route::get('delete_account', [UserController::class, 'deleteAccount']);
     Route::post('delete_account', [UserController::class, 'resendDeleteAccountConfirmationMail']);
+    Route::get('delete_account/cancel', [UserController::class, 'cancelDeleteAccount']);
     Route::get('delete_account/{delete_account_token}', [UserController::class, 'destroyAccount']);
 });
 
