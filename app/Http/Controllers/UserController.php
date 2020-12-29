@@ -155,7 +155,13 @@ class UserController extends Controller
     {
         $user = User::where('email_verification_token', $email_verification_token)
               ->first();
+        if(!$user)
+        {
+            abort(404);
+        }
+
         $user->active = 1;
+        $user->email_verification_token = null;
         $user->save();
         return redirect('/');
     }
