@@ -200,7 +200,7 @@ class UserController extends Controller
      */
     public function forgotPassword(Request $request)
     {
-        $request->session()-forget('login_email');
+        $request->session()->forget('login_email');
         return view('user.forgot_password');
     }
 
