@@ -12,16 +12,20 @@
 @extends('layout.app')
 
 @section('content')
-    <span class="notif">
-        The recovery email has been sent.
-    </span>
+    @if(session('notif'))
+	<span class="notif">
+	    {{ session('notif') }}
+	</span>
+    @endif
     
     <form action="/forgot_password" method="post">
         @csrf
         <ul>
             <li><label for="email">Email</label></li>
-            <li><input type="text" id="email" name="email" value="Enter your email..."></li>
-            <li class="error">Please enter your email.</li>
+            <li><input type="text" id="email" name="email" value="{{ old('email') }}"></li>
+	    @error('email')
+                <li class="error">{{ $message }}</li>
+	    @enderror
 
             <li class="button-group">
                 <span>
