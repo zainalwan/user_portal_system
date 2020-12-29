@@ -146,6 +146,21 @@ class UserController extends Controller
     }
 
     /**
+     * Perform account activation action
+     *
+     * @param  $emali_verification_token
+     * @return \Illuminate\Http\Response
+     */
+    public function activateAccount($email_verification_token)
+    {
+        $user = User::where('email_verification_token', $email_verification_token)
+              ->first();
+        $user->active = 1;
+        $user->save();
+        return redirect('/');
+    }
+
+    /**
      * Show change password form
      *
      * @return \Illuminate\Http\Response
