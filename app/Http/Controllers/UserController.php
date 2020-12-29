@@ -229,6 +229,23 @@ class UserController extends Controller
     }
 
     /**
+     * Perform resending delete confirmation email
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @response \Illuminate\Http\Response
+     */
+    public function resendDeleteAccountConfirmationMail(Request $request)
+    {
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        $this->sendDeleteAccountConfirmationMail($user->email,
+                                         $user->name,
+                                         $user->delete_account_token);
+
+        return redirect('/delete_account')->with('notif', 'New confrimation email has been sent.');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\User  $user
