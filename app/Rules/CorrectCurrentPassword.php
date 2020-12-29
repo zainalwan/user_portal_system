@@ -13,6 +13,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CorrectCurrentPassword implements Rule
 {
@@ -37,7 +38,8 @@ class CorrectCurrentPassword implements Rule
     {
         $user_id = session('_ticket')['id'];
         $user = DB::table('users')
-              ->where('id', $user_id);
+              ->where('id', $user_id)
+              ->first();
 
         return Hash::check($value, $user->password);
     }
