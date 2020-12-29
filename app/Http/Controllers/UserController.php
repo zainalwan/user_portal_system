@@ -227,6 +227,22 @@ class UserController extends Controller
     }
 
     /**
+     * Show reset password form
+     *
+     * @param  $password_reset_token
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword($password_reset_token)
+    {
+        $user = User::where('password_reset_token', $password_reset_token);
+        if(!$user)
+        {
+            abort(404);
+        }
+        return view('user.reset_password');
+    }
+
+    /**
      * Show change password form
      *
      * @return \Illuminate\Http\Response
