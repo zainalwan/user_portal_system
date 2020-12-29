@@ -239,7 +239,9 @@ class UserController extends Controller
         {
             abort(404);
         }
-        return view('user.reset_password');
+        return view('user.reset_password', [
+            'password_reset_token' => $password_reset_token
+        ]);
     }
 
     /**

@@ -12,18 +12,21 @@
 @extends('layout.app')
 
 @section('content')
-    <form action="/register" method="post">
+    <form action="/reset_password/{{ $password_reset_token }}" method="post">
         @csrf
+	@method('put')
         <ul>
             <li><label for="new_password">New password</label></li>
-            <li><input type="password" id="new_password" name="new_password" value="Enter your new password..."></li>
+            <li><input type="password" id="new_password" name="new_password"></li>
             <li class="show-icon">
                 @include('shared.eye')
             </li>
             <li class="hide-icon">
                 @include('shared.eye_slash')
             </li>
-            <li class="error">Please enter new current password.</li>
+	    @error('new_password')
+		<li class="error">{{ $message }}</li>
+	    @enderror
 
             <li class="button-group">
                 <span>
@@ -32,9 +35,4 @@
             </li>
         </ul>
     </form>
-
-    <div class="login-direction">
-        <span>Already have an account?</span>
-        <span><a href="/login">Login</a> now.</span>
-    </div>
 @endsection
