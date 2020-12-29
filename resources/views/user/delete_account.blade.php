@@ -15,16 +15,18 @@
     <p>Please check your email to decide wether you surely want to delete this account or not.</p>
     <p>Click button below to resend deletion confirmation email.</p>
 
-    <span class="notif">
-        The confirmation email has been sent.
-    </span>
+    @if(session('notif'))
+	<span class="notif">
+	    {{ session('notif') }}
+	</span>
+    @endif
 
     <form action="/delete_account" method="post">
         @csrf
         <ul>
             <li class="button-group">
                 <span>
-                    <input class="button primary" type="submit" name="send-email" value="Send confirmation email">
+                    <input class="button primary" type="submit" name="send-email" value="Resend confirmation email">
                 </span>
             </li>
         </ul>
