@@ -45,6 +45,7 @@ Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
     Route::get('change_password', [UserController::class, 'changePassword']);
     Route::put('change_password', [UserController::class, 'updatePassword']);
 
+    Route::delete('delete_account', [UserController::class, 'deleteAccount']);
     Route::get('delete_account', [UserController::class, 'deleteAccount']);
     Route::post('delete_account', [UserController::class, 'resendDeleteAccountConfirmationMail']);
     Route::get('delete_account/{delete_account_token}', [UserController::class, 'destroyAccount']);

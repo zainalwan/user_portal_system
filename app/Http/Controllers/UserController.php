@@ -207,12 +207,12 @@ class UserController extends Controller
     }
 
     /**
-     * Show delete account guide
+     * Perform setting the delete account token and send its email confirmation
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function deleteAccount(Request $request)
+    public function setDeleteAccountToken(Request $request)
     {
         $user_id = $request->session()->get('_ticket')['id'];
         $user = User::find($user_id);
@@ -225,6 +225,16 @@ class UserController extends Controller
 
         $this->sendDeleteAccountConfirmationMail($user->email, $user->name, $user->delete_account_token);
 
+        return redirect('/delete_account');
+    }
+
+    /**
+     * Show delete account guide
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAccount()
+    {
         return view('user.delete_account');
     }
 

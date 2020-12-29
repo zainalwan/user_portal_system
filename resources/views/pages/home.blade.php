@@ -21,7 +21,13 @@
             <a href="/change_password">Change password</a>
         </span>
         <span>
-            <a href="/delete_account">Delete account</a>
+	    <form action="/delete_account" method="post">
+		@csrf
+		@method('delete')
+		<ul>
+		    <li><input type="submit" name="delete-account" value="Delete account"></li>
+		</ul>
+	    </form>
         </span>
         <span>
             <a class="button secondary" href="/log_out">Log out</a>
