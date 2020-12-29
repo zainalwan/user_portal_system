@@ -145,57 +145,31 @@ class UserController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Show change password form
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function changePassword()
     {
-        //
+        return view('user.change_password');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Perform update password action
      *
+     * @param  \App\Http\Requests\UpdatePasswordRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        //
-    }
+        $validated = $request->validated();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        $user->password = Hash::make($validated['new_password']);
+        $user->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
+        return redirect('/change_password');
     }
 
     /**
