@@ -15,6 +15,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserAccountRequest;
 use App\Http\Requests\AuthenticateUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
