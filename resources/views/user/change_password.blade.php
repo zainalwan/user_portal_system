@@ -29,7 +29,7 @@
 	    @enderror
 
             <li><label for="new_password">New password</label></li>
-            <li><input type="password" id="new_password" name="new_password" value="Enter your new password..."></li>
+            <li><input type="password" id="new_password" name="new_password"></li>
             <li class="show-icon">
                 @include('shared.eye')
             </li>
