@@ -17,6 +17,7 @@ use App\Http\Requests\StoreUserAccountRequest;
 use App\Http\Requests\AuthenticateUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\ForgotPasswordRequest;
+use App\Http\Requests\CreateNewPasswordRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -242,6 +243,36 @@ class UserController extends Controller
         return view('user.reset_password', [
             'password_reset_token' => $password_reset_token
         ]);
+    }
+
+    /**
+     * Reset password to a new password
+     *
+     * @param  \App\Http\Request\CreateNewPasswordRequest  $request
+     * @param  $password_reset_token
+     * @return \Illuminate\Http\Response
+     */
+    public function createNewPassword(CreateNewPasswordRequest $request, $password_reset_token)
+    {
+        $validated = $request->validated();
+
+        $user = User::where('password_reset_token', $password_reset_token)->first();
+        $user->password_reset_token = null;
+        $user->password = Hash::make($validated['new_password']);
+        if($user->active == -1)
+        {
+            $user->active = 1;
+        }
+        $user->save();
+
+        $ticket = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'user_name' => $user->user_name,
+            'email' => $user->email,
+        ];
+        $request->session()->put('_ticket', $ticket);
+        return redirect('/');
     }
 
     /**
