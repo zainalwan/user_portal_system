@@ -16,12 +16,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreUserAccountRequest;
 use App\Http\Requests\AuthenticateUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
+use App\Http\Requests\ForgotPasswordRequest;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 use App\Mail\EmailVerification;
+use App\Mail\PasswordReset;
 use App\Mail\DeleteAccountConfirmation;
 
 class UserController extends Controller
@@ -46,6 +48,17 @@ class UserController extends Controller
     {
         Mail::to($email)
             ->send(new DeleteAccountConfirmation($name, $delete_account_token));
+    }
+
+    /**
+     * Send password reset mail
+     *
+     * @return void
+     */
+    private function sendPasswordResetMail($email, $name, $password_reset_token)
+    {
+        Mail::to($email)
+            ->send(new PasswordReset($name, $password_reset_token));
     }
 
     /**
@@ -176,6 +189,39 @@ class UserController extends Controller
         $user->email_verification_token = null;
         $user->save();
         return redirect('/');
+    }
+
+    /**
+     * Show forgot password form
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function forgotPassword()
+    {
+        return view('user.forgot_password');
+    }
+
+    /**
+     * Send password reset mail
+     *
+     * @param  \App\Http\Requests\PasswordResetRequest  $request
+     * @return void
+     */
+    public function setPasswordResetToken(ForgotPasswordRequest $request)
+    {
+        $validated = $request->validated();
+
+        $user = User::where('email', $validated['email'])->first();
+        do
+        {
+            $user->password_reset_token = Str::random(60);
+        }
+        while(User::where('password_reset_token', $user->password_reset_token)->first());
+        $user->save();
+
+        $this->sendPasswordResetMail($user->email, $user->name, $user->password_reset_token);
+
+        return redirect('forgot_password')->with('notif', 'The recovery email has been sent');
     }
 
     /**
