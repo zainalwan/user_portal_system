@@ -28,10 +28,10 @@ class DeleteAccountConfirmation extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name, $delete_account_token)
     {
         $this->name = $name;
-        $this->delete_account_token = $email_verification_token;
+        $this->delete_account_token = $delete_account_token;
     }
 
     /**
