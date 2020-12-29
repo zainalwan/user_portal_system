@@ -194,10 +194,12 @@ class UserController extends Controller
     /**
      * Show forgot password form
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function forgotPassword()
+    public function forgotPassword(Request $request)
     {
+        $request->session()-forget('login_email');
         return view('user.forgot_password');
     }
 
