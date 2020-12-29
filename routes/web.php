@@ -66,6 +66,6 @@ Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
 Route::middleware(['is.not.logged.in'])->group(function() {
     Route::get('forgot_password', [UserController::class, 'forgotPassword']);
     Route::post('forgot_password', [UserController::class, 'setPasswordResetToken']);
-    Route::get('password_reset/{password_reset_token}', [UserController::class, 'resetPassword']);
-    Route::put('password_reset/{password_reset_token}', [UserController::class, 'updatePassword']);
+    Route::get('reset_password/{password_reset_token}', [UserController::class, 'resetPassword']);
+    Route::put('reset_password/{password_reset_token}', [UserController::class, 'updatePassword']);
 });
