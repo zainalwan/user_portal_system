@@ -13,7 +13,7 @@
 
 @section('content')
     <p>
-        Welcome, User. We are so sorry to hear your decision. We hope
+        Welcome, {{ $name }}. We are so sorry to hear your decision. We hope
         you have enjoy our application well.
     </p>
     <p>
@@ -23,7 +23,7 @@
 
     <div class="button-group">
         <span>
-            <a class="button secondary" href="/change_password">Delete account</a>
+            <a class="button secondary" href="{{ url("/delete_account/{$delete_account_token}") }}">Delete account</a>
         </span>
         <span>
             <a class="button primary" href="/change_password">Cancel</a>
