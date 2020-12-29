@@ -23,7 +23,7 @@
 	@method('put')
         <ul>
             <li><label for="current_password">Current password</label></li>
-            <li><input type="password" id="current_password" name="current_password"></li>
+            <li><input type="password" id="current_password" name="current_password" value="{{ old('current_password') }}"></li>
 	    @error('current_password')
                 <li class="error">{{ $message }}</li>
 	    @enderror
