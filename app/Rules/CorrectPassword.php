@@ -14,6 +14,8 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class CorrectPassword implements Rule
 {
@@ -71,13 +73,22 @@ class CorrectPassword implements Rule
                 if(DB::table('users')
                    ->where('email', $email)
                    ->first()
-                   ->try_count >= 10)
+                   ->try_count = 10)
                 {
+                    do
+                    {
+                        $password_reset_token = Str::random(60);
+                    }
+                    while(DB::table('users')->where('password_reset_token', $password_reset_token)->first());
                     DB::table('users')
                         ->where('email', $email)
                         ->update([
                             'active' => -1,
+                            'password_reset_token' => $password_reset_token
                         ]);
+
+                    Mail::to($user->email)
+                        ->send(new AccountRecovery($user->name, $user->password_reset_token));
                 }
                 return false;
             }
