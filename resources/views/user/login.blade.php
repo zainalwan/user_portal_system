@@ -30,8 +30,10 @@
                 @include('shared.eye_slash')
             </li>
 	    @error('password')
-                <li class="error">{{ $message }}</li>
+		<li class="error">{{ $message }}</li>
 	    @enderror
+	    <li class="forgot-password-link"><a href="/forgot_password">Forgot your password?</a></li>
+
 
             <li class="button-group">
                 <span>

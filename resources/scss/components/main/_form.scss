@@ -21,6 +21,14 @@ main {
                 margin-top: .7em;
             }
 
+	    .forgot-password-link {
+		margin-top: 1em;
+
+		a {
+		    color: var.$grey_2;
+		}
+	    }
+
             li {
                 &:nth-of-type(1) {
                     label {
