@@ -13,7 +13,7 @@
 
 @section('content')
     <h3>
-        Welcome, User. Enjoy our application.
+        Welcome, {{ $name }}. Enjoy our application.
     </h3>
 
     <div class="button-group home">
