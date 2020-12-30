@@ -35,7 +35,7 @@ class StoreUserAccountRequest extends FormRequest
         return [
             'name' => ['bail', 'required', 'max:255'],
             'user_name' => ['bail', 'required', 'unique:users,user_name', 'max:255'],
-            'email' => ['bail', 'required', 'unique:users,email'],
+            'email' => ['bail', 'required', 'email', 'unique:users,email'],
             'password' => ['bail', 'regex:/[a-z]/', 'regex:/[A-Z]/', 'regex:/[0-9]/', 'min:8']
         ];
     }
