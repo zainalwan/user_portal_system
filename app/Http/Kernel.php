@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'is.not.active.account' => \App\Http\Middleware\IsNotActiveAccount::class,
         'is.active.account' => \App\Http\Middleware\IsActiveAccount::class,
         'is.blocked.account' => \App\Http\Middleware\IsBlockedAccount::class,
+        'just.deleted' => \App\Http\Middleware\JustDeleted::class,
     ];
 }
