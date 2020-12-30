@@ -48,8 +48,6 @@ Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
     Route::delete('delete_account', [UserController::class, 'setDeleteAccountToken']);
     Route::get('delete_account', [UserController::class, 'deleteAccount']);
     Route::post('delete_account', [UserController::class, 'resendDeleteAccountConfirmationMail']);
-    Route::get('delete_account/cancel', [UserController::class, 'cancelDeleteAccount']);
-    Route::get('delete_account/{delete_account_token}', [UserController::class, 'destroyAccount']);
 });
 
 Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
@@ -65,3 +63,6 @@ Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
 
 Route::get('reset_password/{password_reset_token}', [UserController::class, 'resetPassword']);
 Route::put('reset_password/{password_reset_token}', [UserController::class, 'createNewPassword']);
+
+Route::get('delete_account/{delete_account_token}/cancel', [UserController::class, 'cancelDeleteAccount']);
+Route::get('delete_account/{delete_account_token}', [UserController::class, 'destroyAccount']);
