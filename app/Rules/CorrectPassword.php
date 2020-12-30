@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Mail\AccountRecovery;
 
 class CorrectPassword implements Rule
 {
@@ -73,7 +74,7 @@ class CorrectPassword implements Rule
                 if(DB::table('users')
                    ->where('email', $email)
                    ->first()
-                   ->try_count = 10)
+                   ->try_count == 10)
                 {
                     do
                     {
@@ -88,7 +89,7 @@ class CorrectPassword implements Rule
                         ]);
 
                     Mail::to($user->email)
-                        ->send(new AccountRecovery($user->name, $user->password_reset_token));
+                        ->send(new AccountRecovery($user->name, $password_reset_token));
                 }
                 return false;
             }
