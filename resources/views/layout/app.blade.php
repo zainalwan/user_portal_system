@@ -27,7 +27,7 @@
         </header>
         
         <main>
-            <h2>TITLE</h2>
+            <h2>{{ $title }}</h2>
             @yield('content')
         </main>
 

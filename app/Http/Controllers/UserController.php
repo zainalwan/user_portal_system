@@ -81,7 +81,7 @@ class UserController extends Controller
      */
     public function register()
     {
-        return view('user.register');
+        return view('user.register', ['title' => 'REGISTER']);
     }
 
     /**
@@ -128,7 +128,7 @@ class UserController extends Controller
      */
     public function login()
     {
-        return view('user.login');
+        return view('user.login', ['title' => 'LOGIN']);
     }
 
     /**
@@ -163,7 +163,7 @@ class UserController extends Controller
      */
     public function verify()
     {
-        return view('user.verify_email');
+        return view('user.verify_email', ['title' => 'VERIFY YOUR EMAIL']);
     }
 
     /**
@@ -211,7 +211,7 @@ class UserController extends Controller
      */
     public function warning()
     {
-        return view('user.warning');
+        return view('user.warning', ['title' => 'WARNING']);
     }
 
     /**
@@ -238,7 +238,7 @@ class UserController extends Controller
     public function forgotPassword(Request $request)
     {
         $request->session()->forget('login_email');
-        return view('user.forgot_password');
+        return view('user.forgot_password', ['title' => 'FORGOT PASSWORD']);
     }
 
     /**
@@ -278,6 +278,7 @@ class UserController extends Controller
             abort(404);
         }
         return view('user.reset_password', [
+            'title' => 'RESET PASSWORD',
             'password_reset_token' => $password_reset_token
         ]);
     }
@@ -319,7 +320,7 @@ class UserController extends Controller
      */
     public function changePassword()
     {
-        return view('user.change_password');
+        return view('user.change_password', ['title' => 'CHANGE PASSWORD']);
     }
 
     /**
@@ -369,7 +370,7 @@ class UserController extends Controller
      */
     public function deleteAccount()
     {
-        return view('user.delete_account');
+        return view('user.delete_account', ['title' => 'DELETE ACCOUNT']);
     }
 
     /**

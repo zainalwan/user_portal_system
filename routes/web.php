@@ -39,7 +39,7 @@ Route::get('log_out', [UserController::class, 'logOut'])->middleware('is.logged.
 
 Route::middleware(['is.logged.in', 'is.active.account'])->group(function() {
     Route::get('/', function () {
-        return view('pages.home');
+        return view('pages.home', ['title' => 'HOME']);
     });
 
     Route::get('change_password', [UserController::class, 'changePassword']);
