@@ -61,6 +61,8 @@ Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
     Route::post('warning', [UserController::class, 'resendAccountRecoveryMail']);
 });
 
+Route::get('byebye', [UserController::class, 'byebye'])->middleware('just.deleted');
+
 Route::get('reset_password/{password_reset_token}', [UserController::class, 'resetPassword']);
 Route::put('reset_password/{password_reset_token}', [UserController::class, 'createNewPassword']);
 
