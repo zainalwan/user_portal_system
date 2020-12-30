@@ -272,7 +272,7 @@ class UserController extends Controller
      */
     public function resetPassword($password_reset_token)
     {
-        $user = User::where('password_reset_token', $password_reset_token);
+        $user = User::where('password_reset_token', $password_reset_token)->first();
         if(!$user)
         {
             abort(404);
