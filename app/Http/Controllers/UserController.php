@@ -63,6 +63,17 @@ class UserController extends Controller
     }
 
     /**
+     * Send warning caution mail
+     *
+     * @return void
+     */
+    private function sendAccountRecoveryMail($email, $name, $password_reset_token)
+    {
+        Mail::to($email)
+            ->send(new AccountRecovery($name, $password_reset_token));
+    }
+
+    /**
      * Showing registration form.
      *
      * @return \Illuminate\Http\Response
@@ -200,6 +211,21 @@ class UserController extends Controller
     public function warning()
     {
         return view('user.warning');
+    }
+
+    /**
+     * Reseend warning caution mail
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resendAccountRecoveryMail(Request $request)
+    {
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+        $this->sendAccountRecoveryMail($user->email, $user->name, $user->password_reset_token);
+
+        return redirect('/warning')->with('notif', 'The new recovery mail has been sent.');
     }
 
     /**
