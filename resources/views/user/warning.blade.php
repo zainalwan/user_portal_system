@@ -19,16 +19,18 @@
     </p>
     <p>Click button below to resend recovery email.</p>
 
-    <span class="notif">
-        The recovery email has been sent.
-    </span>
+    @if(session('notif'))
+	<span class="notif">
+            {{ session('notif') }}
+	</span>
+    @endif
 
     <form action="/warning" method="post">
         @csrf
         <ul>
             <li class="button-group">
                 <span>
-                    <input class="button primary" type="submit" name="send-email" value="Send recovery email">
+                    <input class="button primary" type="submit" name="send-email" value="Resend recovery email">
                 </span>
                 <span>
                     <a class="button secondary" href="/log_out">Log out</a>
