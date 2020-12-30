@@ -60,7 +60,7 @@ Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
 
 Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
     Route::get('warning', [UserController::class, 'warning']);
-    Route::post('warning', [UserController::class, 'sendRecovertyAccountMail']);
+    Route::post('warning', [UserController::class, 'resendAccountRecoveryMail']);
 });
 
 Route::middleware(['is.not.logged.in'])->group(function() {
