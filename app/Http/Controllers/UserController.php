@@ -159,11 +159,18 @@ class UserController extends Controller
     /**
      * Show guide for verifying email
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function verify()
+    public function verify(Request $request)
     {
-        return view('user.verify_email', ['title' => 'VERIFY YOUR EMAIL']);
+        $user_id = $request->session()->get('_ticket')['id'];
+        $user = User::find($user_id);
+
+        return view('user.verify_email', [
+            'title' => 'VERIFY YOUR EMAIL',
+            'name' => $user->name
+        ]);
     }
 
     /**

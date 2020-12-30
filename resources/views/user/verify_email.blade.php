@@ -12,7 +12,7 @@
 @extends('layout.app')
 
 @section('content')
-    <p>Welcome, User. Please verify your email by clicking the link we have sent.</p>
+    <p>Welcome, {{ $name }}. Please verify your email by clicking the link we have sent.</p>
     <p>Click button below to resend verification email.</p>
 
     @if(session('notif'))
