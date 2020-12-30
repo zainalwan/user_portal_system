@@ -13,7 +13,7 @@
 
 @section('content')
     <p>
-        Welcome, User. We have catched suspicious activity to your
+        Welcome, {{ $name }}. We have catched suspicious activity to your
         account. We decide to deactivate yours temporarily. You could
         reactivate by clicking button below.
     </p>
@@ -24,7 +24,7 @@
 
     <div class="button-group">
         <span>
-            <a class="button primary" href="/change_password">Reset your password</a>
+            <a class="button primary" href="{{ url('/reset_password/{$password_reset_token}') }}">Get your account back</a>
         </span>
     </div>
 @endsection
