@@ -20,6 +20,7 @@ class DeleteAccountConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
     public $name;
     public $delete_account_token;
     
@@ -30,6 +31,7 @@ class DeleteAccountConfirmation extends Mailable
      */
     public function __construct($name, $delete_account_token)
     {
+        $this->subject = 'DELETE ACCOUNT CONFIRMATION';
         $this->name = $name;
         $this->delete_account_token = $delete_account_token;
     }
@@ -41,7 +43,7 @@ class DeleteAccountConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->subject('Delete Account Confirmation')
+        return $this->subject($this->subject)
                     ->view('emails.delete_account_confirmation');
     }
 }

@@ -20,6 +20,7 @@ class AccountRecovery extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $subject;
     public $name;
     public $password_reset_token;
 
@@ -30,6 +31,7 @@ class AccountRecovery extends Mailable
      */
     public function __construct($name, $password_reset_token)
     {
+        $this->subject = 'ACCOUNT RECOVERY';
         $this->name = $name;
         $this->password_reset_token = $password_reset_token;
     }
@@ -41,7 +43,7 @@ class AccountRecovery extends Mailable
      */
     public function build()
     {
-        return $this->subject('Account Recovery')
+        return $this->subject($this->subject)
                     ->view('emails.account_recovery');
     }
 }
