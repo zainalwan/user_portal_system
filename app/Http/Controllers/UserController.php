@@ -193,6 +193,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show warning caution
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function warning()
+    {
+        return view('user.warning');
+    }
+
+    /**
      * Show forgot password form
      *
      * @param  \Illuminate\Http\Request  $request
