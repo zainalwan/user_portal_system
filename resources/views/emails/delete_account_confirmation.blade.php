@@ -26,7 +26,7 @@
             <a class="button secondary" href="{{ url("/delete_account/{$delete_account_token}") }}">Delete account</a>
         </span>
         <span>
-            <a class="button primary" href="{{ url('/delete_account/cancel') }}">Cancel</a>
+            <a class="button primary" href="{{ url("/delete_account/{$delete_account_token}/cancel") }}">Cancel</a>
         </span>
     </div>
 @endsection
