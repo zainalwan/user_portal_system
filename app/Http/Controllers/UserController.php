@@ -63,7 +63,7 @@ class UserController extends Controller
     }
 
     /**
-     * Send warning caution mail
+     * Send account recovery mail
      *
      * @return void
      */
@@ -214,7 +214,7 @@ class UserController extends Controller
     }
 
     /**
-     * Reseend warning caution mail
+     * Reseend account recovery mail
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
