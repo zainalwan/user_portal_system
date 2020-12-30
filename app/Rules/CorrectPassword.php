@@ -44,7 +44,51 @@ class CorrectPassword implements Rule
 
         if($user)
         {
-            return Hash::check($value, $user->password);
+            if(!Hash::check($value, $user->password))
+            {
+                $date_time = new \DateTime($user->last_try);
+                $delta_time = time() - $date_time->getTimestamp();
+
+                if($delta_time < 30)
+                {
+                    DB::table('users')
+                        ->where('email', $email)
+                        ->update([
+                            'try_count' => $user->try_count + 1,
+                            'last_try' => date('Y-m-d H:i:s')
+                        ]);
+                }
+                else
+                {
+                    DB::table('users')
+                        ->where('email', $email)
+                        ->update([
+                            'try_count' => 1,
+                            'last_try' => date('Y-m-d H:i:s')
+                        ]);
+                }
+
+                if(DB::table('users')
+                   ->where('email', $email)
+                   ->first()
+                   ->try_count >= 10)
+                {
+                    DB::table('users')
+                        ->where('email', $email)
+                        ->update([
+                            'active' => -1,
+                        ]);
+                }
+                return false;
+            }
+
+            DB::table('users')
+                ->where('email', $email)
+                ->update([
+                    'try_count' => 0,
+                    'last_try' => date('Y-m-d H:i:s')
+                ]);
+            return true;
         }
 
         return true;
