@@ -302,6 +302,12 @@ class UserController extends Controller
         $validated = $request->validated();
 
         $user = User::where('password_reset_token', $password_reset_token)->first();
+
+        if(!$user)
+        {
+            abort(404);
+        }
+
         $user->password_reset_token = null;
         $user->password = Hash::make($validated['new_password']);
         if($user->active == -1)
@@ -422,15 +428,28 @@ class UserController extends Controller
      * Perform canceling account deletion
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  $delete_account_token
      * @return \Illuminate\Http\Response
      */
-    public function cancelDeleteAccount(Request $request)
+    public function cancelDeleteAccount(Request $request, $delete_account_token)
     {
-        $user_id = $request->session()->get('_ticket')['id'];
-        $user = User::find($user_id);
+        $user = User::where('delete_account_token', $delete_account_token)->first();
+
+        if(!$user)
+        {
+            abort(404);
+        }
+
         $user->delete_account_token = null;
         $user->save();
 
+        $ticket = [
+            'id' => $user->id,
+            'name' => $user->name,
+            'user_name' => $user->user_name,
+            'email' => $user->email,
+        ];
+        $request->session()->put('_ticket', $ticket);
         return redirect('/');
     }
 
