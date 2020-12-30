@@ -24,7 +24,7 @@
 
     <div class="button-group">
         <span>
-            <a class="button primary" href="{{ url('/reset_password/{$password_reset_token}') }}">Get your account back</a>
+            <a class="button primary" href="{{ url("/reset_password/{$password_reset_token}") }}">Get your account back</a>
         </span>
     </div>
 @endsection
