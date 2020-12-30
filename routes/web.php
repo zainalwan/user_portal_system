@@ -32,7 +32,7 @@ Route::middleware(['is.not.logged.in'])->group(function() {
     Route::post('login', [UserController::class, 'authenticate']);
 
     Route::get('forgot_password', [UserController::class, 'forgotPassword']);
-    Route::post('forgot_password', [UserController::class, 'sendRecovertyAccountMail']);
+    Route::post('forgot_password', [UserController::class, 'setPasswordResetToken']);
 });
 
 Route::get('log_out', [UserController::class, 'logOut'])->middleware('is.logged.in');
@@ -61,11 +61,6 @@ Route::middleware(['is.logged.in', 'is.not.active.account'])->group(function() {
 Route::middleware(['is.logged.in', 'is.blocked.account'])->group(function() {
     Route::get('warning', [UserController::class, 'warning']);
     Route::post('warning', [UserController::class, 'resendAccountRecoveryMail']);
-});
-
-Route::middleware(['is.not.logged.in'])->group(function() {
-    Route::get('forgot_password', [UserController::class, 'forgotPassword']);
-    Route::post('forgot_password', [UserController::class, 'setPasswordResetToken']);
 });
 
 Route::get('reset_password/{password_reset_token}', [UserController::class, 'resetPassword']);
