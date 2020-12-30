@@ -13,7 +13,7 @@
 
 @section('content')
     <p>
-        Hi, User. Your account was successfully deleted. Thank you for
+        Hi, {{ $name }}. Your account was successfully deleted. Thank you for
         choosing our application.
     </p>
 
