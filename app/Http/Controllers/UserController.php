@@ -418,10 +418,13 @@ class UserController extends Controller
             abort(404);
         }
 
+        $name = $user->name;
         $user->delete();
         $request->session()->forget('_ticket');
 
-        return redirect('login');
+        $request->session()->put('just_deleted', true);
+        $request->session()->put('name', $name);
+        return redirect('byebye');
     }
 
     /**
@@ -451,6 +454,24 @@ class UserController extends Controller
         ];
         $request->session()->put('_ticket', $ticket);
         return redirect('/');
+    }
+
+    /**
+     * Show byebye view
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function byebye(Request $request)
+    {
+        $name = $request->session()->get('name');
+
+        $request->session()->forget(['name', 'just_deleted']);
+
+        return view('user.byebye', [
+            'title' => 'THANK YOU',
+            'name' => $name
+        ]);
     }
 
     /**
