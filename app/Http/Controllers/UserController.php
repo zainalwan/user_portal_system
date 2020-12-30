@@ -26,6 +26,7 @@ use Illuminate\Support\Str;
 use App\Mail\EmailVerification;
 use App\Mail\PasswordReset;
 use App\Mail\DeleteAccountConfirmation;
+use App\Mail\AccountRecovery;
 
 class UserController extends Controller
 {
