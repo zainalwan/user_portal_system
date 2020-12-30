@@ -16,4 +16,9 @@
         Hi, User. Your account was successfully deleted. Thank you for
         choosing our application.
     </p>
+
+    <div class="register-direction">
+        <span>Do not have an account?</span>
+        <span><a href="/register">Regsiter</a> now.</span>
+    </div>
 @endsection
